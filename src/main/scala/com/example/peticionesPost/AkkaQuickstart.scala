@@ -1,10 +1,9 @@
 //#full-example
-package com.example
+package com.example.peticionesPost
 
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
-import akka.http.scaladsl.model.headers.RawHeader
-import akka.http.scaladsl.model.{ContentTypes, HttpEntity, HttpMethods, HttpRequest, HttpResponse}
+import akka.http.scaladsl.model._
 import akka.stream.ActorMaterializer
 
 import scala.concurrent.Future
@@ -19,18 +18,18 @@ object AkkaQuickstart {
   val source: String =
     """
       |{
-      |  "id": 101,
-      |  "title": 'foo',
-      |  "body": 'bar',
-      |  "userId": 1
+      |  "id": 2343,
+      |  "title": "foeeeo",
+      |  "body": "beeear",
+      |  "userId": 1000
       |}
       |""".stripMargin
 
 
-  val request = HttpRequest(
+  val request: HttpRequest = HttpRequest(
     method = HttpMethods.POST,
-    uri = "https://jsonplaceholder.typicode.com/posts",
-    entity = HttpEntity(ContentTypes.`application/x-www-form-urlencoded`, source)
+    uri = "https://jsonplaceholder.typicode.com/posts/",
+    entity = HttpEntity(ContentTypes.`application/json`, source)
   )
 
 
